@@ -6,17 +6,53 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const dateInput = document.getElementById('datetime-picker');
 const startBtn = document.querySelector('[data-start]');
+const daysEl = document.querySelector('[data-days]');
+const hoursEl = document.querySelector('[data-hours]');
+const minutesEl = document.querySelector('[data-minutes]');
+const secondsEl = document.querySelector('[data-seconds]');
+let timerId = null;
+let selectedDate = null;
+startBtn.addEventListener('click', startTimer);
 
-const fp = flatpickr(dateInput, {
+flatpickr(dateInput, {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    if (selectedDates[0] <= new Date()) {
+      iziToast.info({
+        position: 'topRight',
+        message: 'Please choose a date in the future',
+      });
+    } else {
+      selectedDate = selectedDates[0];
+      startBtn.removeAttribute('disabled');
+    }
   },
 });
 
+function startTimer() {
+  timerId = setInterval(updateTimer, 1000);
+  startBtn.setAttribute('disabled', true);
+  dateInput.setAttribute('disabled', true);
+}
+function updateTimer() {
+  const diff = selectedDate - new Date();
+  const { days, hours, minutes, seconds } = convertMs(diff);
+  daysEl.textContent = addLeadingZero(days);
+  hoursEl.textContent = addLeadingZero(hours);
+  minutesEl.textContent = addLeadingZero(minutes);
+  secondsEl.textContent = addLeadingZero(seconds);
+  if (diff <= 1000) {
+    clearInterval(timerId);
+    dateInput.removeAttribute('disabled');
+  }
+}
+
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
@@ -35,7 +71,3 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-
-console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
