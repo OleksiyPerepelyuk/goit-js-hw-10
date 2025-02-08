@@ -1,0 +1,83 @@
+.datetime-start {
+  display: flex;
+  margin-top: 36px;
+}
+
+input#datetime-picker {
+  width: 272px;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  padding: 7px 15px;
+  margin-left: 156px;
+  margin-right: 8px;
+}
+
+input#datetime-picker:focus {
+  border: 1px solid #4e75ff;
+}
+
+input#datetime-picker:hover {
+  border: 1px solid #2e2f42;
+}
+
+input#datetime-picker:disabled {
+  color: #808080;
+  background-color: #fafafa;
+  cursor: default;
+}
+
+.timer {
+  display: flex;
+  justify-content: flex-start;
+  margin: 32px 156px;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  width: 55px;
+  height: 72px;
+}
+
+.value {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: #2e2f42;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #2e2f42;
+}
+
+.btn-start {
+  display: inline-block;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+  width: 75px;
+  height: 40px;
+  background: #4e75ff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.btn-start:hover,
+.btn-start:focus {
+  background-color: #6c8cff;
+}
+
+.btn-start:disabled {
+  background: #cfcfcf;
+}
