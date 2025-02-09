@@ -4,28 +4,44 @@
 }
 
 .label-delay {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0.04em;
+  display: block;
+  text-align: left;
   color: #2e2f42;
   margin-bottom: 8px;
+  border-radius: 4px;
 }
 
-.input-delay {
+input[name='delay'] {
   width: 100%;
   height: 40px;
   margin-bottom: 16px;
   box-sizing: border-box;
   padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #808080;
+  outline: none;
+}
+
+input[name='delay']:hover {
+  border: 1px solid #2e2f42;
+}
+
+input[name='delay']:focus {
+  border: 1px solid #4e75ff;
 }
 
 .legend-state {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0.04em;
-
+  text-align: left;
   color: #2e2f42;
 }
 
@@ -34,12 +50,27 @@
   height: 78px;
   box-sizing: border-box;
   margin-bottom: 24px;
+  border-radius: 4px;
+  border: 1px solid #808080;
 }
 
-.input-fulfilled {
+.fieldset-state:hover {
+  border: 1px solid #2e2f42;
 }
 
-.input-Rejected {
+.label-radio {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  padding: 30px;
+}
+
+input[type='radio'] {
+  display: inline-block;
+  color: #2e2f42;
+  width: 20px;
+  height: 20px;
 }
 
 .btn-create {

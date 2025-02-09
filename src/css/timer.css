@@ -12,6 +12,7 @@ input#datetime-picker {
   padding: 7px 15px;
   margin-left: 156px;
   margin-right: 8px;
+  outline: none;
 }
 
 input#datetime-picker:focus {
